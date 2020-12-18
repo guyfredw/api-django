@@ -46,4 +46,7 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Mango)
 admin.site.register(Post)
+<<<<<<< HEAD
 admin.site.register(Comment)
+=======
+>>>>>>> 558b36d... Completed views and model for posts
