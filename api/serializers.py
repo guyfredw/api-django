@@ -16,6 +16,12 @@ class PostSerializer(serializers.ModelSerializer):
     model = Post
     fields = ('id', 'title', 'text', 'owner')
 
+class PostReadSerializer(PostSerializer):
+  comments = CommentSerializer(many=True)
+  class Meta:
+    model = Post
+    fields = ('id', 'title', 'text', 'owner', 'comments')
+
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mango

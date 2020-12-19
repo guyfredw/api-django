@@ -8,7 +8,7 @@ from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.post import Post
-from ..serializers import PostSerializer
+from ..serializers import PostSerializer, PostReadSerializer
 
 # Post views
 class Posts(generics.ListCreateAPIView):
@@ -17,7 +17,7 @@ class Posts(generics.ListCreateAPIView):
   def get(self, request):
     """Index request"""
     posts = Post.objects.filter(owner = request.user.id)
-    data = PostSerializer(posts, many=True).data
+    data = PostReadSerializer(posts, many=True).data
     return Response(data)
 
 
@@ -43,7 +43,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     if not request.user.id == post.owner.id:
       raise PermissionDenied('Unauthorized, you do not own this post')
 
-    data = PostSerializer(post).data
+    data = PostReadSerializer(post).data
     return Response(data)
 
   def delete(self, request, pk):
