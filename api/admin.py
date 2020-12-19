@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models.user import User
 from .models.mango import Mango
 from .models.post import Post
+from .models.comment import Comment
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
@@ -42,3 +43,4 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Mango)
 admin.site.register(Post)
+admin.site.register(Comment)
