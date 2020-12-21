@@ -4,10 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models.user import User
 from .models.mango import Mango
 from .models.post import Post
-<<<<<<< HEAD
 from .models.comment import Comment
-=======
->>>>>>> 1acc380... Rebased for heroku
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
