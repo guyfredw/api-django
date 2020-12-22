@@ -3,7 +3,7 @@ from .views.mango_views import Mangos, MangoDetail
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
 from .views.post_views import Posts, PostDetail
 from .views.comment_views import Comments, CommentDetail
-from .views.post_unauthenticated_views import APosts
+from .views.post_unauthenticated_views import APosts, UnauthenticatedPostDetail
 
 urlpatterns = [
   	# Restful routing
@@ -17,5 +17,6 @@ urlpatterns = [
     path('posts/<int:pk>', PostDetail.as_view(), name='post_detail'),
     path('comments/', Comments.as_view(), name='comments'),
     path('comments/<int:pk>', CommentDetail.as_view(), name='comment_detail'),
-    path('all-posts/', APosts.as_view(), name='all_posts' )
+    path('all-posts/', APosts.as_view(), name='all_posts' ),
+    path('show-post/<int:pk>', UnauthenticatedPostDetail.as_view(), name='upost_detail')
 ]

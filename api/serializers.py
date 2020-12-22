@@ -6,15 +6,24 @@ from .models.user import User
 from .models.post import Post
 from .models.comment import Comment
 
+# Serializer for the unauthenticated posts
 class UAPostSerializer(serializers.ModelSerializer):
   class Meta:
     model = Post
     fields = ('id', 'title', 'text')
 
+
 class CommentSerializer(serializers.ModelSerializer):
   class Meta:
     model = Comment
     fields = ('id', 'body', 'owner', 'post_id')
+
+# Serializer for the unauthenticated show post to display the comments
+class UAPostReadSerializer(UAPostSerializer):
+  comments = CommentSerializer(many=True)
+  class Meta:
+    model = Post
+    fields = ('id', 'title', 'text', 'owner', 'comments')
 
 class PostSerializer(serializers.ModelSerializer):
   class Meta:
