@@ -6,6 +6,11 @@ from .models.user import User
 from .models.post import Post
 from .models.comment import Comment
 
+class UAPostSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Post
+    fields = ('id', 'title', 'text')
+
 class CommentSerializer(serializers.ModelSerializer):
   class Meta:
     model = Comment
