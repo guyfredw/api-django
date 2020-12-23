@@ -18,7 +18,6 @@ class Posts(generics.ListCreateAPIView):
     """Index request"""
     posts = Post.objects.filter(owner = request.user.id)
     data = PostReadSerializer(posts, many=True).data
-    data = PostReadSerializer(posts, many=True).data
     return Response(data)
 
 
